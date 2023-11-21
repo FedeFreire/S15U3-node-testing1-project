@@ -137,6 +137,7 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
+    this.tankSize = tankSize;
     this.name = name;
     this.mpg = mpg;
     // ✨ initialize whatever other properties are needed
@@ -182,13 +183,9 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-
-    if (this.tank + gallons <= 20) {
-      this.tank += gallons;
-    }
+    this.tank = Math.min(this.tank + gallons, this.tankSize);
+  
     return this.tank * this.mpg;
-
-    // ✨ implement
   }
 }
 
